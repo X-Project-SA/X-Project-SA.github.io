@@ -1,1 +1,38 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Write to File</title>
+</head>
+<body>
+
+  <button onclick="writeToFile()">Write to File</button>
+
+  <script>
+    function writeToFile() {
+      // Create a Blob with the content "hello world"
+      const blob = new Blob(['hello world'], { type: 'text/plain' });
+
+      // Create a link element
+      const link = document.createElement('a');
+
+      // Set the download attribute and file name
+      link.download = 'hello.txt';
+
+      // Create a URL for the Blob and set it as the href attribute
+      link.href = window.URL.createObjectURL(blob);
+
+      // Append the link to the body
+      document.body.appendChild(link);
+
+      // Simulate a click on the link to trigger the download
+      link.click();
+
+      // Remove the link from the DOM
+      document.body.removeChild(link);
+    }
+  </script>
+
+</body>
+</html>
